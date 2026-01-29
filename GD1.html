@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>議題：ヒトマル王国 王の朝食問題</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f8;
+            --text-main: #2c3e50;
+            --card-bg: #ffffff;
+            --pan-color: #d35400;
+            --rice-color: #27ae60;
+            --header-bg: #34495e;
+            --mission-bg: #2c3e50;
+        }
+
+        /* 印刷・PDF化設定 */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: white;
+            }
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .story-box, .vs-grid, .mission {
+                break-inside: avoid;
+            }
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--header-bg) !important;
+            color: white !important;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            -webkit-print-color-adjust: exact;
+        }
+        header h1 { margin: 0; font-size: 22px; }
+        .role {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: white;
+        }
+
+        /* 本文セクション（新しい部分） */
+        .story-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 6px solid #2c3e50;
+        }
+        .story-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .story-text p {
+            margin-bottom: 1em;
+            font-size: 0.95em;
+            text-align: justify;
+        }
+        .story-text ul {
+            background: #f9f9f9;
+            padding: 15px 15px 15px 35px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* ビジュアルまとめセクション */
+        .visual-summary-title {
+            text-align: center;
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-weight: bold;
+            position: relative;
+        }
+        .visual-summary-title::before, .visual-summary-title::after {
+            content: "";
+            display: inline-block;
+            width: 50px;
+            height: 1px;
+            background: #ccc;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        /* 以下、図解用CSS（前回と同じ） */
+        .intro-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            border-left: 6px solid #7f8c8d !important;
+        }
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .option-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-top: 6px solid #ccc !important;
+        }
+        .option-pan { border-top-color: var(--pan-color) !important; }
+        .option-rice { border-top-color: var(--rice-color) !important; }
+        h2.card-title { margin-top: 0; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 10px; }
+        h3 { font-size: 0.95em; margin-bottom: 5px; color: #555; margin-top: 10px; }
+        .data-ul { padding-left: 18px; margin: 0; }
+        .data-li { margin-bottom: 4px; font-size: 0.9em; }
+        .stat-box {
+            background: #f9f9f9 !important;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            -webkit-print-color-adjust: exact;
+        }
+        .strong { font-weight: bold; }
+        .danger { color: #c0392b; font-weight: bold; }
+        .diplomacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .diplo-card {
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed #aaa;
+        }
+        .mission {
+            background: var(--mission-bg) !important;
+            color: white !important;
+            padding: 15px;
+            border-radius: 8px;
+            -webkit-print-color-adjust: exact;
+        }
+        .mission h2 { border-bottom: 1px solid rgba(255,255,255,0.3); color: white; margin-bottom: 10px; margin-top:0; font-size: 1.2em;}
+        .mission ul { list-style: none; padding: 0; margin: 0; }
+        .mission li {
+            background: rgba(255,255,255,0.1) !important;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            -webkit-print-color-adjust: exact;
+        }
+        .num {
+            background: #f1c40f !important;
+            color: #2c3e50;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+            font-size: 0.8em;
+            -webkit-print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ヒトマル王国 王の朝食問題</h1>
+        <div class="role">あなたたちの役割：王族に仕える側近</div>
+    </header>
+
+    <div class="story-section">
+        <div class="story-title">📖 シナリオ</div>
+        <div class="story-text">
+            <p>あなたたち4人は、ヒトマル王国の王族に仕える側近です。現在、王様の朝食について「パンを出すか」「米を出すか」のどちらにするか決定しなければなりません。</p>
+            <p>これは単なる食事の好みの問題ではありません。王様の食生活は国民の食生活の象徴です。国民のほとんどが王様の生活スタイルに憧れており、<strong>王様がパンを食べるとなれば国民の90％の朝食スタイルがパンに変わるほどの影響力</strong>を持ちます。</p>
+            <p>ヒトマル王国は米農業を基盤とする国で、伝統的な主食は米です。しかし近年、都市部を中心にパン人気が高まり、王様自身もパンを好んでいます。それに伴い、多くの国民の朝食スタイルも米からパンへ移行しました。</p>
+            
+            <p><strong>【現状の課題】</strong></p>
+            <ul>
+                <li>国内の小麦生産量はほぼ5%。小麦の約95％は隣国フタマル王国からの輸入に依存。</li>
+                <li>小麦価格は上昇傾向で、輸入コストが国家財政を圧迫（10%を占める）。</li>
+                <li>一方で、米の在庫が余り、倉庫維持費が増大。</li>
+                <li>米価格は下落し、米農家の所得減少により貧富の格差が拡大。政府への不満が高まっている。</li>
+            </ul>
+
+            <p><strong>【外交状況】</strong></p>
+            <ul>
+                <li><strong>対フタマル王国（小麦輸入先）：</strong>関係は安定しているが、価格交渉が厳しくなっている。</li>
+                <li><strong>対サンマル王国（米輸出候補）：</strong>余っている米は輸出可能だが、関税問題で交渉が停滞している。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="visual-summary-title">▼ 状況整理ダッシュボード ▼</div>
+
+    <div class="vs-grid">
+        <div class="option-card option-pan">
+            <h2 class="card-title" style="color: var(--pan-color);">🍞 選択肢A：パン</h2>
+            <div class="stat-box">
+                <strong>現状：</strong><br>
+                王様と国民（都市部）に大人気。<br>
+                国民の食生活が急速にパンへ移行中。
+            </div>
+            <h3>⚠️ 発生している問題</h3>
+            <ul class="data-ul">
+                <li class="data-li">国内小麦生産量：<strong>ほぼ 5%</strong></li>
+                <li class="data-li">95% を隣国フタマル王国に依存</li>
+                <li class="data-li">価格上昇・輸入コストが<span class="danger">財政の10%を圧迫</span></li>
+            </ul>
+        </div>
+
+        <div class="option-card option-rice">
+            <h2 class="card-title" style="color: var(--rice-color);">🌾 選択肢B：米</h2>
+            <div class="stat-box">
+                <strong>現状：</strong><br>
+                国の伝統的な主食であり農業基盤。<br>
+                パン人気により需要・消費が減少。
+            </div>
+            <h3>⚠️ 発生している問題</h3>
+            <ul class="data-ul">
+                <li class="data-li">在庫余剰による<strong>倉庫維持費の増大</strong></li>
+                <li class="data-li">米価格下落により農家の所得減少</li>
+                <li class="data-li">貧富格差拡大・政府への<span class="danger">不満爆発寸前</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="intro-card" style="border-left-color: #f39c12 !important;">
+        <h2 class="card-title" style="margin-bottom: 10px;">🌍 外交カードの状況</h2>
+        <div class="diplomacy-grid">
+            <div class="diplo-card">
+                <h3>フタマル王国（小麦輸入先）</h3>
+                <ul class="data-ul">
+                    <li class="data-li">関係性：継続輸入で安定</li>
+                    <li class="data-li">課題：<span class="danger">価格交渉が厳しい</span></li>
+                </ul>
+            </div>
+            <div class="diplo-card">
+                <h3>サンマル王国（米輸出先）</h3>
+                <ul class="data-ul">
+                    <li class="data-li">可能性：輸出自体は可能</li>
+                    <li class="data-li">課題：<span class="danger">関税交渉で停滞</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="mission">
+        <h2>🚀 達成条件（ゴール）</h2>
+        <p style="margin-top: 0; margin-bottom: 10px; font-size: 0.9em;">単に「AかBか」を決めるのではなく、王様が納得し、国の方向性として国民も納得できる「結論（ストーリー）」を作ってください。</p>
+        <ul>
+            <li><span class="num">1</span> 王様本人が納得すること</li>
+            <li><span class="num">2</span> 国民に説明しても反発が最小であること</li>
+            <li><span class="num">3</span> 外交関係への影響が最小であること</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
